@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InvoicesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/invoices', function () {
-    return view('invoices');
-});
+Route::get('/invoices', [InvoicesController::class, 'index']);
+
+Route::get('/invoices/add', [InvoicesController::class, 'create']);
 
 Route::get('/welcome', function () {
     return view('welcome');

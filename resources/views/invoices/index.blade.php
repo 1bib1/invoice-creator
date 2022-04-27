@@ -10,7 +10,8 @@
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
-                </div>aaa
+                </div>
+                {{ $name }}
             </div>
     </section>
 @endsection
