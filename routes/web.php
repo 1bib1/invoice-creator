@@ -20,7 +20,21 @@ Route::get('/', function () {
 
 Route::get('/invoices', [InvoicesController::class, 'index'])->name('invoices.list');
 
-Route::get('/invoices/add', [InvoicesController::class, 'create'])->name('invoices.add');
+## return invoice create view
+Route::get('/invoices/create', [InvoicesController::class, 'create'])->name('invoices.add');
+Route::post('/invoices/store', [InvoicesController::class, 'store'])->name('invoices.store');
+
+## return edit view
+Route::get('/invoices/edit/{id}', [InvoicesController::class, 'edit'])->name('invoices.edit');
+#post edit of invoice
+Route::put('/invoices/update/{id}', [InvoicesController::class, 'update'])->name('invoices.update');
+#delete invoice
+Route::delete('/invoices/delete/{id}', [InvoicesController::class, 'delete'])->name('invoices.delete');
+
+
+
+
+
 
 Route::get('/welcome', function () {
     return view('welcome');

@@ -3,6 +3,12 @@
 @section('content')
     <section class="masthead page-section portfolio" id="portfolio">
             <div class="container">
+                 @if(session()->has('message'))
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Holy guacamole!</strong> {{ session()->get('message'); }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <!-- Portfolio Section Heading-->
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Invoice List</h2>
                 <!-- Icon Divider-->
@@ -17,8 +23,9 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Number</th>
-                            <th scope="col">date</th>
-                            <th scope="col">price</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,6 +35,14 @@
                             <td>{{$invoice->number}}</td>
                             <td>{{$invoice->date}}</td>
                             <td>{{$invoice->total}}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{route('invoices.edit', ['id' => $invoice->id])}}"> Edit</a>
+                                <form action="{{route('invoices.delete', ['id' => $invoice->id] ) }}" method="POST" id="contactForm" class="needs-validation" novalidate>  
+                                    {{ csrf_field() }}
+                                    @method('delete')
+                                    <button class="btn btn-danger" type="submit"> Delete</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                        
