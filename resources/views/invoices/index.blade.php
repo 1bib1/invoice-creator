@@ -11,7 +11,28 @@
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                {{ $name }}
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Number</th>
+                            <th scope="col">date</th>
+                            <th scope="col">price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($invoices as $invoice)
+                        <tr>
+                            <th scope="row">{{$invoice->id}}</th>
+                            <td>{{$invoice->number}}</td>
+                            <td>{{$invoice->date}}</td>
+                            <td>{{$invoice->total}}</td>
+                        </tr>
+                        @endforeach
+                       
+                    </tbody>
+                </table>
             </div>
     </section>
 @endsection

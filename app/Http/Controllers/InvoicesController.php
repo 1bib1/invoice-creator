@@ -10,7 +10,7 @@ class InvoicesController extends Controller
     public function index(){
         
         $invoices = Invoice::all();
-        return view('invoices.index', ['name' => $invoices]); 
+        return view('invoices.index', ['invoices' => $invoices]); 
     }
 
     public function create(){
