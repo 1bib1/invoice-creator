@@ -22,6 +22,7 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Klient</th>
                             <th scope="col">Number</th>
                             <th scope="col">Date</th>
                             <th scope="col">Total</th>
@@ -32,6 +33,7 @@
                         @foreach ($invoices as $invoice)
                         <tr>
                             <th scope="row">{{$invoice->id}}</th>
+                            <td>{{$invoice->customer->name}}</td>
                             <td>{{$invoice->number}}</td>
                             <td>{{$invoice->date}}</td>
                             <td>{{$invoice->total}}</td>

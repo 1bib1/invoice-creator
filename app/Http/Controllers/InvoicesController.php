@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class InvoicesController extends Controller
 {
     public function index(){
         
-        $invoices = Invoice::all();
+        $invoices = Invoice::with('customer')->get();
         return view('invoices.index', compact('invoices')); 
     }
 
     public function create(){
-        return view('invoices.create'); 
+        $customers = Customer::all();
+        return view('invoices.create', compact('customers')); 
     }
 
     public function edit($id){
@@ -25,17 +27,21 @@ class InvoicesController extends Controller
     public function delete($id){
         $invoice = Invoice::find($id);
         $invoice->destroy($id);
-        return redirect()->route('invoices.list')->with('message', 'Successfully deleted invoice.');
+        return redirect()->route('invoices.index')->with('message', 'Successfully deleted invoice.');
     }
 
     public function store(Request $request){
+
         $invoice = new Invoice(); 
+
         $invoice->number = $request->number;
         $invoice->date = $request->date;
         $invoice->total = $request->total;
+        $invoice->customer_id = $request->customer;
+
         $invoice->save();
 
-        return redirect()->route('invoices.list')->with('message', 'Invoice added to database.');
+        return redirect()->route('invoices.index')->with('message', 'Invoice added to database.');
     }
     
     public function update($id, Request $request){
@@ -44,9 +50,10 @@ class InvoicesController extends Controller
         $invoice->number = $request->number;
         $invoice->date = $request->date;
         $invoice->total = $request->total;
+        $invoice->customer_id = $request->customer;
         $invoice->save();
 
-        return redirect()->route('invoices.list')->with('message', 'Successfully updated invoice.');
+        return redirect()->route('invoices.index')->with('message', 'Successfully updated invoice.');
     }
     
     

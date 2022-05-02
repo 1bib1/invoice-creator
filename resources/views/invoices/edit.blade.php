@@ -19,6 +19,15 @@
                         <form action="{{ route('invoices.update', ['id' => $invoice->id] ) }}" method="POST" id="contactForm" class="needs-validation" novalidate>  
                         {{ csrf_field() }}
                         @method('PUT')
+                            <!-- Customer select input -->   
+                            <div class="form-floating mb-3">
+                                <select id="customer" name="customer" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option selected>Select Customer</option>
+                                    @foreach (\App\Models\Customer::all() as $customer)
+                                        <option value="{{$customer->id}}">{{$customer->name}}</option>
+                                    @endforeach
+                               </select>
+                            </div>
                             <!-- Invoice number input-->
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="number" name="number" type="text" placeholder="Invoice Number..." value="{{$invoice->number}}" required/>

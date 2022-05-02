@@ -37,10 +37,11 @@ class CustomersController extends Controller
     {
             $customer = new Customer(); 
 
+
             $customer->name = $request->name;
             $customer->address = $request->address;
             $customer->tin = $request->tin;
-
+            
             $customer->save();
 
             return redirect()->route('customers.index')->with('message', 'Customer added to database.');
