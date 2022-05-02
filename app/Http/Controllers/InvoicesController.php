@@ -10,7 +10,7 @@ class InvoicesController extends Controller
     public function index(){
         
         $invoices = Invoice::all();
-        return view('invoices.index', ['invoices' => $invoices]); 
+        return view('invoices.index', compact('invoices')); 
     }
 
     public function create(){
@@ -19,7 +19,7 @@ class InvoicesController extends Controller
 
     public function edit($id){
         $invoice = Invoice::find($id);
-        return view('invoices.edit', ['invoice' => $invoice]); 
+        return view('invoices.edit', compact('invoice')); 
     }
 
     public function delete($id){
