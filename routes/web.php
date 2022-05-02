@@ -30,8 +30,6 @@ Route::get('/invoices/edit/{id}', [InvoicesController::class, 'edit'])->name('in
 Route::put('/invoices/update/{id}', [InvoicesController::class, 'update'])->name('invoices.update');
 #delete invoice
 Route::delete('/invoices/delete/{id}', [InvoicesController::class, 'delete'])->name('invoices.delete');
-#Route::resource('/invoices', InvoicesController::class, ['names' => 'invoices']);
-#Route::resource('/customers', CustomersController::class);
 
 Route::resource('/customers', CustomersController::class);
 
