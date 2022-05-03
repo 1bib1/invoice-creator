@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Customer;
-use Illuminate\Http\Request;
+use App\Http\Requests\CustomerStoreRequest;
+use App\Http\Requests\CustomerUpdateRequest;
+
 
 class CustomersController extends Controller
 {
@@ -33,14 +35,8 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CustomerStoreRequest $request)
     {       
-            $request->validate([
-                'name' => 'required|min:3',
-                'address' => 'required|min:5',
-                'tin' => 'required|min:8'
-            ]);
-
             $customer = new Customer(); 
 
             $customer->name = $request->name;
@@ -50,6 +46,32 @@ class CustomersController extends Controller
             $customer->save();
 
             return redirect()->route('customers.index')->with('message', 'Customer added to database.');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(CustomerUpdateRequest $request, $id)
+    {
+        
+        $request->validate([
+            'name' => 'required|min:3',
+            'address' => 'required|min:5',
+            'tin' => 'required|min:8'
+        ]);
+        
+        $customer = Customer::Find($id);
+        $customer->name = $request->name;
+        $customer->address = $request->address;
+        $customer->tin = $request->tin;
+
+        $customer->save();
+
+        return redirect()->route('customers.index')->with('message', 'Successfully updated customer information.');
     }
 
     /**
@@ -74,26 +96,6 @@ class CustomersController extends Controller
     {
         $customer = Customer::Find($id);
         return view('customers.edit', compact('customer'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        
-        $customer = Customer::Find($id);
-        $customer->name = $request->name;
-        $customer->address = $request->address;
-        $customer->tin = $request->tin;
-
-        $customer->save();
-
-        return redirect()->route('customers.index')->with('message', 'Successfully updated customer information.');
     }
 
     /**

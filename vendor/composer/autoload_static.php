@@ -51,6 +51,7 @@ class ComposerStaticInit225be7b55f967b484c8e075c3cf33ebf
         'T' => 
         array (
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
+            'Theanik\\LaravelMoreCommand\\' => 27,
             'Tests\\' => 6,
         ),
         'S' => 
@@ -192,6 +193,10 @@ class ComposerStaticInit225be7b55f967b484c8e075c3cf33ebf
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
             0 => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src',
+        ),
+        'Theanik\\LaravelMoreCommand\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/theanik/laravel-more-command/src',
         ),
         'Tests\\' => 
         array (
@@ -519,6 +524,8 @@ class ComposerStaticInit225be7b55f967b484c8e075c3cf33ebf
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\InvoiceStoreRequest' => __DIR__ . '/../..' . '/app/Http/Requests/InvoiceStoreRequest.php',
+        'App\\Http\\Requests\\InvoiceUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/InvoiceUpdateRequest.php',
         'App\\Models\\Customer' => __DIR__ . '/../..' . '/app/Models/Customer.php',
         'App\\Models\\Invoice' => __DIR__ . '/../..' . '/app/Models/Invoice.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
@@ -527,6 +534,8 @@ class ComposerStaticInit225be7b55f967b484c8e075c3cf33ebf
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Traits\\Customers' => __DIR__ . '/../..' . '/app/Traits/Customers.php',
+        'App\\Traits\\Invoices' => __DIR__ . '/../..' . '/app/Traits/Invoices.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
@@ -5492,6 +5501,19 @@ class ComposerStaticInit225be7b55f967b484c8e075c3cf33ebf
         'TheSeer\\Tokenizer\\TokenCollectionException' => __DIR__ . '/..' . '/theseer/tokenizer/src/TokenCollectionException.php',
         'TheSeer\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/theseer/tokenizer/src/Tokenizer.php',
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
+        'Theanik\\LaravelMoreCommand\\Commands\\ClearLogCommand' => __DIR__ . '/..' . '/theanik/laravel-more-command/src/Commands/ClearLogCommand.php',
+        'Theanik\\LaravelMoreCommand\\Commands\\CommandGenerator' => __DIR__ . '/..' . '/theanik/laravel-more-command/src/Commands/CommandGenerator.php',
+        'Theanik\\LaravelMoreCommand\\Commands\\CreateBladeCommand' => __DIR__ . '/..' . '/theanik/laravel-more-command/src/Commands/CreateBladeCommand.php',
+        'Theanik\\LaravelMoreCommand\\Commands\\CreateModuleBladeCommand' => __DIR__ . '/..' . '/theanik/laravel-more-command/src/Commands/CreateModuleBladeCommand.php',
+        'Theanik\\LaravelMoreCommand\\Commands\\CreateModuleRepositoryCommand' => __DIR__ . '/..' . '/theanik/laravel-more-command/src/Commands/CreateModuleRepositoryCommand.php',
+        'Theanik\\LaravelMoreCommand\\Commands\\CreateModuleServiceCommand' => __DIR__ . '/..' . '/theanik/laravel-more-command/src/Commands/CreateModuleServiceCommand.php',
+        'Theanik\\LaravelMoreCommand\\Commands\\CreateModuleTraitCommand' => __DIR__ . '/..' . '/theanik/laravel-more-command/src/Commands/CreateModuleTraitCommand.php',
+        'Theanik\\LaravelMoreCommand\\Commands\\CreateRepositoryCommand' => __DIR__ . '/..' . '/theanik/laravel-more-command/src/Commands/CreateRepositoryCommand.php',
+        'Theanik\\LaravelMoreCommand\\Commands\\CreateServiceCommand' => __DIR__ . '/..' . '/theanik/laravel-more-command/src/Commands/CreateServiceCommand.php',
+        'Theanik\\LaravelMoreCommand\\Commands\\CreateTraitCommand' => __DIR__ . '/..' . '/theanik/laravel-more-command/src/Commands/CreateTraitCommand.php',
+        'Theanik\\LaravelMoreCommand\\LaravelMoreCommandProvider' => __DIR__ . '/..' . '/theanik/laravel-more-command/src/LaravelMoreCommandProvider.php',
+        'Theanik\\LaravelMoreCommand\\Support\\FileGenerator' => __DIR__ . '/..' . '/theanik/laravel-more-command/src/Support/FileGenerator.php',
+        'Theanik\\LaravelMoreCommand\\Support\\GenerateFile' => __DIR__ . '/..' . '/theanik/laravel-more-command/src/Support/GenerateFile.php',
         'TijsVerkoyen\\CssToInlineStyles\\CssToInlineStyles' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/CssToInlineStyles.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Processor.php',

@@ -14,4 +14,13 @@ class Customer extends Model
     {
         return $this->HasMany('App\Models\Invoice');
     }
+    
+    public function fetchFromRequest(Customer $customer, $request){
+
+        $customer->name = $request->name;
+        $customer->address = $request->address;
+        $customer->tin = $request->tin;
+
+        return $customer;
+    }
 }
