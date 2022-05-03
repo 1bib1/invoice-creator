@@ -9,8 +9,14 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
+                
+
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Customer's data</h2>
+                <p>{{ $customer->name }} </p>
+                <p>{{$customer->address }}</p>
+                <p>{{$customer->tin }}</p>
                 <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">List of Customers</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Invoice List</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -22,22 +28,22 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Tax Identification Number</th>
+                            <th scope="col">Number</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Total</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($customers as $customer)
+                        @foreach ($customer->invoices as $invoice)
                         <tr>
-                            <th scope="row">{{$customer->id}}</th>
-                            <td><a href="{{ route('customers.show', ['customer' => $customer->id]) }}">{{ $customer->name }}</a></td>
-                            <td>{{$customer->address}}</td>
-                            <td>{{$customer->tin}}</td>
-                            <td> 
-                            <a class="btn btn-primary" href="{{ route('customers.edit', ['customer' => $customer->id]) }}">Edit</a>
-                                <form method="POST"    action="{{ route('customers.destroy', ['customer' => $customer->id]) }}"  id="contactForm" class="needs-validation" novalidate>  
+                            <th scope="row">{{$invoice->id}}</th>
+                            <td>{{$invoice->number}}</td>
+                            <td>{{$invoice->date}}</td>
+                            <td>{{$invoice->total}}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{route('invoices.edit', ['id' => $invoice->id])}}"> Edit</a>
+                                <form action="{{route('invoices.delete', ['id' => $invoice->id] ) }}" method="POST" id="contactForm" class="needs-validation" novalidate>  
                                     {{ csrf_field() }}
                                     @method('delete')
                                     <button class="btn btn-danger" type="submit"> Delete</button>

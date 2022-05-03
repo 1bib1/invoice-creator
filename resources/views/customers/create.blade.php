@@ -4,6 +4,15 @@
         <!-- Add Invoice Section-->
         <section class="masthead page-section" id="contact">
             <div class="container">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <!-- Contact Section Heading-->
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Add Customer</h2>
                 <!-- Icon Divider-->
@@ -19,19 +28,19 @@
                             {{ csrf_field() }}
                             <!-- Customer Name input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" name="name" type="text" placeholder="Name of Customer" required/>
+                                <input class="form-control" id="name" name="name" type="text" placeholder="Name of Customer" value="{{ old('name') }}" />
                                 <label for="name">Customer Name</label>
                                 <div class="invalid-feedback" data-sb-feedback="number:required">A name is required.</div>
                             </div>
                             <!-- Customer Address input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="address" name="address" type="text" placeholder="Customer's Address" required/>
+                                <input class="form-control" id="address" name="address" type="text" placeholder="Customer's Address" value="{{ old('address') }}" />
                                 <label for="address">Address</label>
                                 <div class="invalid-feedback">Address is required.</div>
                             </div>
                             <!-- Customer TIN input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="tin" name="tin" type="text" placeholder="12345678" required/>
+                                <input class="form-control" id="tin" name="tin" type="text" placeholder="12345678" value="{{ old('tin') }}" />
                                 <label for="tin">Tax Identification Number</label>
                                 <div class="invalid-feedback">TIN is required.</div>
                             </div>

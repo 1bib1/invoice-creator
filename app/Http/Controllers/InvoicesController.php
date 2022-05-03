@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Invoice;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Http\Requests\InvoiceStoreRequest;
 
 class InvoicesController extends Controller
 {
@@ -30,7 +31,7 @@ class InvoicesController extends Controller
         return redirect()->route('invoices.index')->with('message', 'Successfully deleted invoice.');
     }
 
-    public function store(Request $request){
+    public function store(InvoiceStoreRequest $request){
 
         $invoice = new Invoice(); 
 

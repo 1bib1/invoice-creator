@@ -34,9 +34,14 @@ class CustomersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-            $customer = new Customer(); 
+    {       
+            $request->validate([
+                'name' => 'required|min:3',
+                'address' => 'required|min:5',
+                'tin' => 'required|min:8'
+            ]);
 
+            $customer = new Customer(); 
 
             $customer->name = $request->name;
             $customer->address = $request->address;
@@ -45,7 +50,6 @@ class CustomersController extends Controller
             $customer->save();
 
             return redirect()->route('customers.index')->with('message', 'Customer added to database.');
-    
     }
 
     /**
@@ -56,7 +60,8 @@ class CustomersController extends Controller
      */
     public function show($id)
     {
-        
+        $customer = Customer::with('invoices')->where('id', $id)->firstOrFail();
+        return view('customers.single', compact('customer'));
     }
 
     /**
@@ -80,8 +85,8 @@ class CustomersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $customer = Customer::Find($id);
-
         $customer->name = $request->name;
         $customer->address = $request->address;
         $customer->tin = $request->tin;
