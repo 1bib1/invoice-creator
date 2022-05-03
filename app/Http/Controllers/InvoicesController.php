@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use App\Models\Customer;
-use App\Http\Requests\InvoiceStoreRequest;
-use App\Http\Requests\InvoiceUpdateRequest;
+use App\Http\Requests\InvoiceRequest;
 
 class InvoicesController extends Controller
 {
@@ -31,7 +30,7 @@ class InvoicesController extends Controller
         return redirect()->route('invoices.index')->with('message', 'Successfully deleted invoice.');
     }
 
-    public function store(InvoiceStoreRequest $request){
+    public function store(InvoiceRequest $request){
 
         $invoice = new Invoice(); 
 
@@ -45,10 +44,10 @@ class InvoicesController extends Controller
         return redirect()->route('invoices.index')->with('message', 'Invoice added to database.');
     }
     
-    public function update($id, InvoiceUpdateRequest $request){
+    public function update($id, InvoiceRequest $request){
         
         $invoice = Invoice::find($id);
-        
+
         $invoice->number = $request->number;
         $invoice->date = $request->date;
         $invoice->total = $request->total;

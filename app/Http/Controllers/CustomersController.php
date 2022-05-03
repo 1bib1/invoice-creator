@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Customer;
-use App\Http\Requests\CustomerStoreRequest;
-use App\Http\Requests\CustomerUpdateRequest;
-
+use App\Http\Requests\CustomerRequest;
 
 class CustomersController extends Controller
 {
@@ -35,7 +33,7 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CustomerStoreRequest $request)
+    public function store(CustomerRequest $request)
     {       
             $customer = new Customer(); 
 
@@ -55,7 +53,7 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CustomerUpdateRequest $request, $id)
+    public function update(CustomerRequest $request, $id)
     {
         
         $request->validate([
