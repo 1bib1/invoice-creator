@@ -55,13 +55,7 @@ class CustomersController extends Controller
      */
     public function update(CustomerRequest $request, $id)
     {
-        
-        $request->validate([
-            'name' => 'required|min:3',
-            'address' => 'required|min:5',
-            'tin' => 'required|min:8'
-        ]);
-        
+
         $customer = Customer::Find($id);
         $customer->name = $request->name;
         $customer->address = $request->address;
