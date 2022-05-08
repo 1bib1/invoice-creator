@@ -24,7 +24,7 @@ class InvoicesController extends Controller
         return view('invoices.edit', compact('invoice')); 
     }
 
-    public function delete($id){
+    public function destroy($id){
         $invoice = Invoice::find($id);
         $invoice->destroy($id);
         return redirect()->route('invoices.index')->with('message', 'Successfully deleted invoice.');

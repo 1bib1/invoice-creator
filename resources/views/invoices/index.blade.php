@@ -39,7 +39,7 @@
                             <td>{{$invoice->total}}</td>
                             <td>
                                
-                                <a class="btn btn-primary" href="{{route('invoices.edit', ['invoice' => $invoice->id])}}"> Edit</a>
+                                <a class="btn btn-primary" href="{{ route('invoices.edit', ['invoice' => $invoice->id]) }}"> Edit</a>
                                 <form action="{{route('invoices.destroy', ['invoice' => $invoice->id]) }}" method="POST" id="contactForm" class="needs-validation" novalidate>  
                                     {{ csrf_field() }}
                                     @method('delete')

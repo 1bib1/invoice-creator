@@ -16,7 +16,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
                         <!-- Add invoice form-->
-                        <form action="{{ route('invoices.update', ['id' => $invoice->id] ) }}" method="POST" id="contactForm" class="needs-validation" novalidate>  
+                        <form action="{{ route('invoices.update', ['invoice' => $invoice->id] ) }}" method="POST" id="contactForm" class="needs-validation" novalidate>  
                         {{ csrf_field() }}
                         @method('PUT')
                             <!-- Invoice number input-->
