@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="masthead  section tab-pane" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-    
-    <div class="container d-flex align-items-center flex-column">
+<div class="masthead container">
+  <div class="container d-flex align-items-center flex-column">
         <h1 class="masthead-heading text-uppercase mb-0">Register</h1>
-        <form method="POST" action="{{ route('register.perform') }}">
+        <form method="POST" action="{{ route('register.perform') }}" style="margin-top:50px; min-width:300px;">
             <div class="text-center mb-3">
             {{ csrf_field() }}
             <!-- Username input -->
@@ -44,18 +43,22 @@
             @endif
             </div>
 
-            <!-- Checkbox -->
+            <!-- Checkbox 
             <div class="form-check d-flex justify-content-center mb-4">
                 <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
                 aria-describedby="registerCheckHelpText" />
                 <label class="form-check-label" for="registerCheck">
                 I have read and agree to the terms
                 </label>
-            </div>
+            </div>-->
 
             <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+            <button type="submit" class="btn btn-primary btn-block mb-3" style="width:100%">Register</button>
         </form>
+        <div class="text-center">
+        <p>Already a member? <a href="{{ route('login.show') }}">Login.</a></p>
+      </div>
     </div>
+</div>
 </div>
 @endsection

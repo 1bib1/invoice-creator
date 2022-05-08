@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Invoice;
 use App\Models\Customer;
 use App\Http\Requests\InvoiceRequest;
@@ -10,12 +11,12 @@ class InvoicesController extends Controller
 {
     public function index(){
         
-        $invoices = Invoice::with('customer')->get();
+        $invoices = Invoice::where('user_id', Auth::id())->get();
         return view('invoices.index', compact('invoices')); 
     }
 
     public function create(){
-        $customers = Customer::all();
+        $customers = Customer::where('user_id', Auth::id())->get();
         return view('invoices.create', compact('customers')); 
     }
 
@@ -38,7 +39,7 @@ class InvoicesController extends Controller
         $invoice->date = $request->date;
         $invoice->total = $request->total;
         $invoice->customer_id = $request->customer;
-
+        $invoice->user_id = Auth::id();
         $invoice->save();
 
         return redirect()->route('invoices.index')->with('message', 'Invoice added to database.');
@@ -51,6 +52,7 @@ class InvoicesController extends Controller
         $invoice->number = $request->number;
         $invoice->date = $request->date;
         $invoice->total = $request->total;
+        $invoice->user_id = Auth::id();
         $invoice->save();
 
         return redirect()->route('invoices.index')->with('message', 'Successfully updated invoice.');

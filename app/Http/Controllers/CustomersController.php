@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Http\Requests\CustomerRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CustomersController extends Controller
 {
@@ -13,7 +14,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
+        $customers = Customer::where('user_id', Auth::id())->get();
         return view('customers.index', compact('customers')); 
     }
 
@@ -40,7 +41,7 @@ class CustomersController extends Controller
             $customer->name = $request->name;
             $customer->address = $request->address;
             $customer->tin = $request->tin;
-            
+            $customer->user_id = Auth::id();
             $customer->save();
 
             return redirect()->route('customers.index')->with('message', 'Customer added to database.');
@@ -60,7 +61,7 @@ class CustomersController extends Controller
         $customer->name = $request->name;
         $customer->address = $request->address;
         $customer->tin = $request->tin;
-
+        $customer->user_id = Auth::id();
         $customer->save();
 
         return redirect()->route('customers.index')->with('message', 'Successfully updated customer information.');
