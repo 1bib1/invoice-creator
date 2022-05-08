@@ -38,12 +38,14 @@
                             <td>{{$invoice->date}}</td>
                             <td>{{$invoice->total}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{route('invoices.edit', ['id' => $invoice->id])}}"> Edit</a>
-                                <form action="{{route('invoices.delete', ['id' => $invoice->id] ) }}" method="POST" id="contactForm" class="needs-validation" novalidate>  
+                               
+                                <a class="btn btn-primary" href="{{route('invoices.edit', ['invoice' => $invoice->id])}}"> Edit</a>
+                                <form action="{{route('invoices.destroy', ['invoice' => $invoice->id]) }}" method="POST" id="contactForm" class="needs-validation" novalidate>  
                                     {{ csrf_field() }}
                                     @method('delete')
                                     <button class="btn btn-danger" type="submit"> Delete</button>
                                 </form>
+                                
                             </td>
                         </tr>
                         @endforeach

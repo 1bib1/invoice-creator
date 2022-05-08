@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-
+/*
 Route::get('/invoices', [InvoicesController::class, 'index'])->name('invoices.index');
 # return invoice create view
 Route::get('/invoices/create', [InvoicesController::class, 'create'])->name('invoices.create');
@@ -29,7 +29,9 @@ Route::get('/invoices/edit/{id}', [InvoicesController::class, 'edit'])->name('in
 #post edit of invoice
 Route::put('/invoices/update/{id}', [InvoicesController::class, 'update'])->name('invoices.update');
 #delete invoice
-Route::delete('/invoices/delete/{id}', [InvoicesController::class, 'delete'])->name('invoices.delete');
+Route::delete('/invoices/delete/{id}', [InvoicesController::class, 'delete'])->name('invoices.destroy');
+*/
+Route::resource('/invoices', InvoicesController::class);
 
 Route::resource('/customers', CustomersController::class);
 
