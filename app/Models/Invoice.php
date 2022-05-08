@@ -13,4 +13,9 @@ class Invoice extends Model
     {
         return $this->belongsTo('App\Models\Customer');
     }
+    
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

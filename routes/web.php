@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\InvoicesController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Auth\Middleware\Authenticate;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +19,6 @@ use Illuminate\Auth\Middleware\Authenticate;
 */
 
 /*
-Route::get('/invoices', [InvoicesController::class, 'index'])->name('invoices.index');
 # return invoice create view
 Route::get('/invoices/create', [InvoicesController::class, 'create'])->name('invoices.create');
 #post form for invoice creation 
@@ -34,9 +35,26 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::group(['middleware' =>['guest']], function(){
+    #login routes
+    Route::get('/login', [LoginController::class, 'show'])->name('login.show');
+    Route::post('/login', [LoginController::class, 'login'])->name('login.perform');
+    #register routes
+    Route::get('/register', [RegisterController::class, 'show'])->name('register.show');
+    Route::post('/register', [RegisterController::class, 'register'])->name('register.perform');
+});
 
-Route::resource('/invoices', InvoicesController::class)->middleware('auth');
-Route::resource('/customers', CustomersController::class)->middleware('auth');
+Route::group(['middleware' => ['auth']], function() {
+    /**
+     * Logout Routes
+     */
+    Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform');
+    #invoice routes
+    Route::resource('/invoices', InvoicesController::class);
+    #customer routes
+    Route::resource('/customers', CustomersController::class);
+});
+
 
 Route::get('/welcome', function () {
     return view('welcome');

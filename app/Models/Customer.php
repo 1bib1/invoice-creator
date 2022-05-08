@@ -23,4 +23,9 @@ class Customer extends Model
 
         return $customer;
     }
+    
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

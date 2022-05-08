@@ -16,6 +16,14 @@ return new class extends Migration
         Schema::table('invoices', function (Blueprint $table) {
             $table->unsignedbigInteger('customer_id');
             $table->foreign('customer_id',)->references('id')->on('customers');
+
+            $table->unsignedbigInteger('user_id');
+            $table->foreign('user_id',)->references('id')->on('users');
+        });
+
+        Schema::table('customers', function (Blueprint $table) {
+            $table->unsignedbigInteger('user_id');
+            $table->foreign('user_id',)->references('id')->on('users');
         });
     }
 
